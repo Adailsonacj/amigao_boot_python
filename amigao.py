@@ -1,11 +1,13 @@
 import telepot
+from Chatbot import Chatbot
 
-bot = telepot.Bot('620827053:AAFomD5guWm00hAopL096sST6M6HVwff5UI')
+telegram = telepot.Bot('620827053:AAFomD5guWm00hAopL096sST6M6HVwff5UI')
+bot = Chatbot("HashLDash")
 
 def inMsg(msg):
     print(msg['text'])
 
-bot.message_loop(inMsg)
+telegram.message_loop(inMsg)
 
 while True:
     pass
