@@ -1,10 +1,27 @@
-from Chatbot import *
+import telepot
+from Chatbot import Chatbot
 
-Bot = Chatbot('José')
+telegram = telepot.Bot('620827053:AAFomD5guWm00hAopL096sST6M6HVwff5UI')
+
+bot = Chatbot('Roberto')
+
+def inMsg(msg):
+    #print(msg['text'])
+    frase = bot.escuta(frase=msg['text'])
+    resp = bot.pensa(frase)
+    bot.fala(resp)
+    #chatID = msg['chat']['id']
+    tipoMsg, tipoChat, chatID = telepot.glance(msg)
+    telegram.sendMessage(chatID, resp)
+
+
+telegram.message_loop(inMsg)
 
 while True:
-    frase = Bot.escuta()
-    resp = Bot.pensa(frase)
-    Bot.fala(resp)
-    if resp == 'tchau':
-        break
+    pass
+
+
+#while True:
+#    frase = Bot.escuta()
+#    resp = Bot.pensa(frase)
+#    Bot.fala(resp)
